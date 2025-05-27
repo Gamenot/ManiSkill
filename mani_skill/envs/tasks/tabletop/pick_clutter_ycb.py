@@ -150,10 +150,10 @@ class PickClutterEnv(BaseEnv):
         for i in range(self.num_envs):
             selected_obj_idxs = torch.randint(low=0, high=99999, size=(self.num_envs,))
             selected_obj_idxs[i] = selected_obj_idxs[i] % len(
-                self.selectable_target_objects[-1]
+                self.selectable_target_objects[i]
             )
             target_objects.append(
-                self.selectable_target_objects[-1][selected_obj_idxs[i]]
+                self.selectable_target_objects[i][selected_obj_idxs[i]]
             )
         self.target_object = Actor.merge(target_objects, name="target_object")
 
